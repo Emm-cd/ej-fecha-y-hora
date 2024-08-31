@@ -13,8 +13,11 @@ function datos(req, res, next) {
       second: '2-digit',
     };
     
-    console.log(date.toLocaleTimeString('en-US', timeOptions));
-    console.log(date.toLocaleDateString('en-US', dateOptions));
+    req.tiempo=date.toLocaleTimeString('en-US', timeOptions);
+    req.fecha=date.toLocaleDateString('en-US', dateOptions);
+    console.log(req.tiempo);
+    console.log(req.fecha);
+    next(); 
 };
 
   module.exports=datos;
