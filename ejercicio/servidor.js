@@ -9,6 +9,16 @@ var saludo =(req,res, next) =>{
     next();
 }
 
+var bienvenida =(req,res, next) =>{
+    console.log("¡Welcome!");
+    next();
+}
+
+var animo =(req,res, next) =>{
+    console.log("¡Keep exploring!");
+    next();
+}
+
 app.use('/primeraruta', datos);
 app.use('/segundaruta', datos);
 
@@ -21,14 +31,14 @@ app.get("/home", (req,res)=>{
     res.send("hola estas en home");
 });
 
-app.get("/primeraruta", (req,res)=>{
+app.get("/primeraruta", bienvenida, (req,res)=>{
     res.send(`<p>Es la primera ruta, accediste en la siguiente fecha y hora.</p><p>Fecha: ${req.fecha}</p>
         <p>Hora: ${req.tiempo}</p><p>¡BIENVENIDO USUARIO!</p>`);
 
 
 });
 
-app.get("/segundaruta", (req,res)=>{
+app.get("/segundaruta", animo, (req,res)=>{
     res.send(`<p>Es la segunda ruta, accediste en la siguiente fecha y hora.</p><p>Fecha: ${req.fecha}</p>
         <p>Hora: ${req.tiempo}</p><p>¡SIGUE EXPLORANDO NUESTRA PÁGINA!</p>`);
 });
